@@ -18,9 +18,9 @@ class Day01: AdventOfCode("src/main/resources/InputD1.aoc") {
     }
 
     private fun getMostNutritiousBackpack(input: List<String>): String {
-        var backpack = 0
-
         var output = 0
+
+        var backpack = 0
 
         for(i in input.indices) {
             if(input[i] != "")
@@ -34,12 +34,12 @@ class Day01: AdventOfCode("src/main/resources/InputD1.aoc") {
         return output.toString()
     }
     private fun getSumOfThreeMostNutritiousBackpacks(input: List<String>): String {
+        var output = 0
+
         var backpack = 0
         var first = 0
         var second = 0
         var third = 0
-
-        var output: Int
 
         for(i in input.indices) {
             if (input[i] != "")
@@ -51,8 +51,8 @@ class Day01: AdventOfCode("src/main/resources/InputD1.aoc") {
                 backpack = 0
             }
         }
-
         output = first + second + third
+
         return output.toString()
     }
 }
