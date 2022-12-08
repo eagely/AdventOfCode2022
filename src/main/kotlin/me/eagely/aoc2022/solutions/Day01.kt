@@ -51,8 +51,8 @@ class Day01: AdventOfCode("src/main/resources/InputD1.aoc") {
                 backpack = 0
             }
         }
+
         output = first + second + third
-        
         return output.toString()
     }
 }
