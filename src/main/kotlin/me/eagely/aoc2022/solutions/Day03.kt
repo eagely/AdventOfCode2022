@@ -2,9 +2,8 @@ package me.eagely.aoc2022.solutions
 
 import me.eagely.aoc2022.AdventOfCode
 
-class Day03: AdventOfCode("src/main/resources/InputD3.aoc") {
-    override fun getDay(): Int
-    {
+class Day03 : AdventOfCode("src/main/resources/InputD3.aoc") {
+    override fun getDay(): Int {
         return 3
     }
 
@@ -19,7 +18,7 @@ class Day03: AdventOfCode("src/main/resources/InputD3.aoc") {
     }
 
     private fun sortBackpacks(input: List<String>): Int {
-        var output = 0
+        var priority = 0
 
         var first: String
         var second: String
@@ -33,40 +32,34 @@ class Day03: AdventOfCode("src/main/resources/InputD3.aoc") {
                     sharedItem = first[j]
                     break
                 }
-            output += if (sharedItem.isUpperCase())
+            priority += if (sharedItem.isUpperCase())
                 sharedItem.code - 38
             else
                 sharedItem.code - 96
         }
-
-        return output
+        return priority
     }
 
     private fun sortThreeBackpacks(input: List<String>): Int {
-        var output = 0
-
+        var priority = 0
         var first: String
         var second: String
         var third: String
         var sharedItem = ' '
-
-        var i = 0
-        while(i < input.size) {
+        for(i in input.indices step 3) {
             first = input[i]
-            second = input[i+1]
-            third = input[i+2]
-            for(j in first.indices)
-                if(second.indexOf(first[j]) != -1 && third.indexOf(first[j]) != -1) {
+            second = input[i + 1]
+            third = input[i + 2]
+            for (j in first.indices)
+                if (second.indexOf(first[j]) != -1 && third.indexOf(first[j]) != -1) {
                     sharedItem = first[j]
                     break
                 }
-            output += if(sharedItem.isUpperCase())
+            priority += if (sharedItem.isUpperCase())
                 sharedItem.code - 38
             else
                 sharedItem.code - 96
-            i += 3
         }
-
-        return output
+        return priority
     }
 }

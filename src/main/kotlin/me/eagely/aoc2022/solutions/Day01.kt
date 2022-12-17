@@ -2,46 +2,43 @@ package me.eagely.aoc2022.solutions
 
 import me.eagely.aoc2022.AdventOfCode
 
-class Day01: AdventOfCode("src/main/resources/InputD1.aoc") {
+class Day01 : AdventOfCode("src/main/resources/InputD1.aoc") {
     override fun getDay(): Int {
         return 1
     }
 
     override fun solvePart1(): String {
         val input: List<String> = getInput().readLines()
-        return getMostNutritiousBackpack(input)
+        return getMostNutritiousBackpack(input).toString()
     }
 
     override fun solvePart2(): String {
         val input: List<String> = getInput().readLines()
-        return getSumOfThreeMostNutritiousBackpacks(input)
+        return getThreeMostNutritiousBackpacks(input).toString()
     }
 
-    private fun getMostNutritiousBackpack(input: List<String>): String {
-        var output = 0
-
+    private fun getMostNutritiousBackpack(input: List<String>): Int {
+        var calories = 0
         var backpack = 0
-
-        for(i in input.indices) {
-            if(input[i] != "")
+        for (i in input.indices) {
+            if (input[i] != "")
                 backpack += Integer.parseInt(input[i])
             else {
-                if(backpack > output) output = backpack
+                if (backpack > calories)
+                    calories = backpack
                 backpack = 0
             }
         }
-
-        return output.toString()
+        return calories
     }
-    private fun getSumOfThreeMostNutritiousBackpacks(input: List<String>): String {
-        var output = 0
 
+    private fun getThreeMostNutritiousBackpacks(input: List<String>): Int {
+        var calories: Int
         var backpack = 0
         var first = 0
         var second = 0
         var third = 0
-
-        for(i in input.indices) {
+        for (i in input.indices) {
             if (input[i] != "")
                 backpack += Integer.parseInt(input[i])
             else {
@@ -51,8 +48,7 @@ class Day01: AdventOfCode("src/main/resources/InputD1.aoc") {
                 backpack = 0
             }
         }
-        output = first + second + third
-
-        return output.toString()
+        calories = first + second + third
+        return calories
     }
 }
