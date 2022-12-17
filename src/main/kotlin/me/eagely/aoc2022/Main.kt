@@ -1,13 +1,20 @@
-import me.eagely.aoc2022.AdventOfCode
-import me.eagely.aoc2022.solutions.Day01
-import me.eagely.aoc2022.solutions.Day02
-import me.eagely.aoc2022.solutions.Day03
+package me.eagely.aoc2022
 
-fun main(args: Array<String>) {
+import me.eagely.aoc2022.solutions.*
+
+fun main() {
     val puzzles = listOf<AdventOfCode>(
         Day01(),
         Day02(),
-        Day03()
+        Day03(),
+        Day04(),
+        Day05(),
+        Day06(),
+        Day08(),
+        Day10(),
+        Day11(),
+        Day16(),
+        Day17()
     )
     puzzles.forEach { puzzle ->
         val day = java.lang.String.format("%02d", puzzle.getDay())

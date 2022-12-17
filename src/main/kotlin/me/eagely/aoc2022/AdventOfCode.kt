@@ -6,14 +6,18 @@ import java.io.File
  * Abstract class that represents the solution to an Advent of Code puzzle.
  * Constructor which accepts the relative file path of the input file (Format as InputDayX.aoc where X is the day number)
  */
-abstract class AdventOfCode(private val inputFilePath: String) {
-
+abstract class AdventOfCode(private val inputFilePath: String, private val outputFilePath: String? = null) {
     /**
      * Return the File object of the input file
      * @return the File object of the input file
      */
     fun getInput(): File {
         return File(this.inputFilePath)
+    }
+
+    fun getOutput(): File {
+        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+        return File(this.outputFilePath)
     }
 
     /**
